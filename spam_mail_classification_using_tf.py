@@ -1,6 +1,6 @@
 import tensorflow as tf
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.preprocessing.text import Tokenizer  #tokenizing
+from tensorflow.keras.preprocessing.sequence import pad_sequences  #making the input into fixed length
 import numpy as np
 
 # Sample dataset
@@ -34,7 +34,7 @@ model = tf.keras.Sequential([
 ])
 
 model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
-model.summary()
+model.summary() #training the model
 
 # Train model
 model.fit(padded_sequences, labels, epochs=20, verbose=2)
@@ -48,3 +48,4 @@ prediction = model.predict(test_padded_sequence)  # shape (1,1)
 prob = float(prediction[0][0])
 print(f"Spam probability: {prob:.4f}")
 print("Spam" if prob > 0.5 else "Not Spam")
+
